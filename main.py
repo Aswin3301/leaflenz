@@ -1,3 +1,5 @@
+import os
+import requests
 import streamlit as st
 import tensorflow as tf
 import numpy as np
@@ -9,7 +11,17 @@ st.title("Plant Stage Prediction")
 
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model("model.h5")
+    if not os.path.exists("./model.h5"):
+        print("Model Not Found. Downloading...")
+        res = requests.get("https://drive.usercontent.google.com/download?id=1GJSck2sAQlMo_tVrDLTCUHP3_4VaOaoX&export=download")
+        if res.status_code == 200:
+            with open("./model.h5", "wb") as file:
+                file.write(res.content)
+        print("Model downloaded successfully!")
+    else:
+        print("Model Found.")
+    print("Loading Model...")
+    return tf.keras.models.load_model("./model.h5")
 
 def preprocess_image(img):
     img = image.load_img(img, target_size=(150, 150))
