@@ -5,11 +5,11 @@ from tensorflow.keras.preprocessing import image
 
 classes = ['Early Stage', 'Mid Stage', 'Last Stage']
 
-st.title("Disease Prediction")
+st.title("Plant Stage Prediction")
 
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model("Data_trained_disease_model.h5")
+    return tf.keras.models.load_model("model.h5")
 
 def preprocess_image(img):
     img = image.load_img(img, target_size=(150, 150))
