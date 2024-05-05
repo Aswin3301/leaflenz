@@ -22,7 +22,7 @@ Important considerations during chemical treatment:
 • Local regulations and recommendations: Consult local agricultural authorities for tailored advice and adhere to guidelines.
 • Product label: Always follow the product label for concentration, frequency and safety precautions.
 """,
-    'Mid-Stage': """MID-STAGE:
+    'Mid Stage': """MID-STAGE:
 • MID STAGE:
 • Avoid over-irrigation: Be careful with the splashing of water. Drip or micro irrigation sprinkler is recommended.
 • Pesticides application: Apply every 7days of interval.
@@ -97,4 +97,4 @@ if img:
     if pred_class_label in class_content:
         st.success(class_content[pred_class_label])
     else:
-        st.success("No content available for predicted classs:", pred_class_label)
+        st.success("No content available for predicted classs:" + pred_class_label)
